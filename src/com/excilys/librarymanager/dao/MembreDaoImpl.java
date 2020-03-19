@@ -17,15 +17,23 @@ import java.sql.Statement;
  * MembreDaoImpl
  */
 public class MembreDaoImpl implements MembreDao {
+    private static MembreDaoImpl instance;
 
-
-    private static final String InsertQuery = "INSERT INTO membre (nom, prenom, adresse, email, telephone, abonnement) values (?,?,?,?,?,?)";
-    private static final String DeleteQuery = "DELETE FROM membre WHERE id=?";
-    private static final String EditQuery = "UPDATE membre SET nom=?, prenom=?, adresse=?, email=?, telephone=?, abonnement=? WHERE id=?";
-    private static final String GetQuery = "SELECT * FROM membre WHERE id=?";
-    private static final String GetAllQuery = "SELECT * FROM membre";
-    private static final String CountQuery = "SELECT COUNT(*) as quantity FROM membre";
+    private static final String INSERT_QUERY = "INSERT INTO membre (nom, prenom, adresse, email, telephone, abonnement) values (?,?,?,?,?,?)";
+    private static final String DELETE_QUERY = "DELETE FROM membre WHERE id=?";
+    private static final String EDIT_QUERY = "UPDATE membre SET nom=?, prenom=?, adresse=?, email=?, telephone=?, abonnement=? WHERE id=?";
+    private static final String GET_QUERY = "SELECT * FROM membre WHERE id=?";
+    private static final String GET_ALL_QUERY = "SELECT * FROM membre";
+    private static final String COUNT_QUERY = "SELECT COUNT(*) as quantity FROM membre";
     
+    private MembreDaoImpl() {}
+
+    public static MembreDaoImpl getInstance() {
+        if(instance == null) {
+            instance = new MembreDaoImpl();
+        }
+        return instance;
+    }
 
     @Override
     public List<Membre> getList() throws DaoException {
@@ -35,7 +43,7 @@ public class MembreDaoImpl implements MembreDao {
         List<Membre> membres = new ArrayList<>();
         try {
             connection = ConnectionManager.getConnection();
-            preparedStatement = connection.prepareStatement(GetAllQuery);
+            preparedStatement = connection.prepareStatement(GET_ALL_QUERY);
             res = preparedStatement.executeQuery();
 			
 			while(res.next()) {
@@ -46,13 +54,13 @@ public class MembreDaoImpl implements MembreDao {
                     res.getString("adresse"), 
                     res.getString("email"), 
                     res.getString("telephone"),
-                    (Abonnement.values()[res.getInt("abonnement")]) 
+                    Abonnement.valueOf(res.getString("abonnement")) 
                 );
 				membres.add(membre);
 			}
 
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DaoException("Problème lors de la récupération de la liste des membres", e);
         } finally {
             try {
 				res.close();
@@ -82,21 +90,22 @@ public class MembreDaoImpl implements MembreDao {
         Membre membre = null;
         try {
             connection = ConnectionManager.getConnection();
-            preparedStatement = connection.prepareStatement(GetQuery);
+            preparedStatement = connection.prepareStatement(GET_QUERY);
             preparedStatement.setInt(1, id);
             res = preparedStatement.executeQuery();
-
-            membre = new Membre(
-                res.getInt("id"), 
-                res.getString("nom"), 
-                res.getString("prenom"),
-                res.getString("adresse"), 
-                res.getString("email"), 
-                res.getString("telephone"),
-                (Abonnement.values()[res.getInt("abonnement")]) 
-            );
+            if(res.next()) {
+                membre = new Membre(
+                    res.getInt("id"), 
+                    res.getString("nom"), 
+                    res.getString("prenom"),
+                    res.getString("adresse"), 
+                    res.getString("email"), 
+                    res.getString("telephone"),
+                    Abonnement.valueOf(res.getString("abonnement")) 
+                );
+            }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DaoException("Problème lors de la récupération du membre: id= " + id, e);
         } finally {
             try {
 				res.close();
@@ -126,20 +135,22 @@ public class MembreDaoImpl implements MembreDao {
         int id = -1;
         try {
             connection = ConnectionManager.getConnection();
-            preparedStatement = connection.prepareStatement(InsertQuery, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = connection.prepareStatement(INSERT_QUERY, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, nom);
             preparedStatement.setString(2, prenom);
             preparedStatement.setString(3, adresse);
             preparedStatement.setString(4, email);
             preparedStatement.setString(5, telephone);
-            
+            preparedStatement.setString(6, null);
 
-
+            preparedStatement.executeUpdate();
             res = preparedStatement.getGeneratedKeys();
-            id = res.getInt(1);
+            if (res.next()) {
+                id = res.getInt(1);
+            }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DaoException("Problème lors de la création du membre.", e);
         } finally {
             try {
 				res.close();
@@ -163,29 +174,24 @@ public class MembreDaoImpl implements MembreDao {
 
     @Override
     public void update(Membre membre) throws DaoException {
-        ResultSet res = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
         try {
             connection = ConnectionManager.getConnection();
-            preparedStatement = connection.prepareStatement(EditQuery);
+            preparedStatement = connection.prepareStatement(EDIT_QUERY);
 
             preparedStatement.setString(1, membre.getNom());
             preparedStatement.setString(2, membre.getPrenom());
             preparedStatement.setString(3, membre.getAdresse());
             preparedStatement.setString(4, membre.getEmail());
             preparedStatement.setString(5, membre.getTelephone());
-            preparedStatement.setInt(6, (membre.getAbonnement().getVal()));
-
-            res = preparedStatement.executeQuery();
+            preparedStatement.setString(6, membre.getAbonnement().toString());
+            preparedStatement.setInt(7, membre.getId());
+            
+            preparedStatement.executeQuery();
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DaoException("Problème lors de la mise à jour du membre: " + membre, e);
         } finally {
-            try {
-				res.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			try {
 				preparedStatement.close();
 			} catch (Exception e) {
@@ -203,23 +209,17 @@ public class MembreDaoImpl implements MembreDao {
 
     @Override
     public void delete(int id) throws DaoException {
-        ResultSet res = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
         try {
             connection = ConnectionManager.getConnection();
-            preparedStatement = connection.prepareStatement(DeleteQuery);
+            preparedStatement = connection.prepareStatement(DELETE_QUERY);
             preparedStatement.setInt(1, id);
 
-            res = preparedStatement.executeQuery();
+            preparedStatement.executeQuery();
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DaoException("Problème lors de la suppression du membre: id= " + id, e);
         } finally {
-            try {
-				res.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			try {
 				preparedStatement.close();
 			} catch (Exception e) {
@@ -243,12 +243,15 @@ public class MembreDaoImpl implements MembreDao {
         int quantity = -1;
         try {
             connection = ConnectionManager.getConnection();
-            preparedStatement = connection.prepareStatement(CountQuery);
+            preparedStatement = connection.prepareStatement(COUNT_QUERY);
             res = preparedStatement.executeQuery();
-            quantity = res.getInt("quantity");
+            
+            if(res.next()) {
+                quantity = res.getInt("quantity");
+            }
 
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DaoException("Problème lors du comptage des membres", e);
         } finally {
             try {
 				res.close();
