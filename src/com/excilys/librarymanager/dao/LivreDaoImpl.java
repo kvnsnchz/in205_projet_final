@@ -29,7 +29,7 @@ public class LivreDaoImpl implements LivreDao {
 
     private LivreDaoImpl() {}
 
-    public static LivreDaoImpl getInstance() {
+    public static LivreDao getInstance() {
         if(instance == null) {
             instance = new LivreDaoImpl();
         }

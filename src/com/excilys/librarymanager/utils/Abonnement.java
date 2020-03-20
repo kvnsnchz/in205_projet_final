@@ -4,9 +4,9 @@ package com.excilys.librarymanager.utils;
  * Abonnement
  */
 public enum Abonnement {
-    BASIC(0),
-    PREMIUM(1),
-    VIP(2);
+    BASIC(2),
+    PREMIUM(5),
+    VIP(20);
 
     public int val;
     

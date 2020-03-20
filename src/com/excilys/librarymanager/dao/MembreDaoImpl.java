@@ -28,7 +28,7 @@ public class MembreDaoImpl implements MembreDao {
     
     private MembreDaoImpl() {}
 
-    public static MembreDaoImpl getInstance() {
+    public static MembreDao getInstance() {
         if(instance == null) {
             instance = new MembreDaoImpl();
         }
@@ -142,7 +142,7 @@ public class MembreDaoImpl implements MembreDao {
             preparedStatement.setString(3, adresse);
             preparedStatement.setString(4, email);
             preparedStatement.setString(5, telephone);
-            preparedStatement.setString(6, Abonnement.BASIC.toString());
+            preparedStatement.setString(6, Abonnement.BASIC.name());
 
             preparedStatement.executeUpdate();
             res = preparedStatement.getGeneratedKeys();
@@ -185,7 +185,7 @@ public class MembreDaoImpl implements MembreDao {
             preparedStatement.setString(3, membre.getAdresse());
             preparedStatement.setString(4, membre.getEmail());
             preparedStatement.setString(5, membre.getTelephone());
-            preparedStatement.setString(6, membre.getAbonnement().toString());
+            preparedStatement.setString(6, membre.getAbonnement().name());
             preparedStatement.setInt(7, membre.getId());
             
             preparedStatement.executeUpdate();
