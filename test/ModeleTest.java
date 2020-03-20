@@ -1,7 +1,0 @@
-/**
- * ModeleTest
- */
-public class ModeleTest {
-
-    
-}
