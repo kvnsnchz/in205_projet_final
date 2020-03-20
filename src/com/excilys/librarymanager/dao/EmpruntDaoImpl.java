@@ -11,9 +11,7 @@ import java.util.List;
 
 import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.model.Emprunt;
-import com.excilys.librarymanager.model.Membre;
 import com.excilys.librarymanager.persistence.ConnectionManager;
-import com.excilys.librarymanager.utils.Abonnement;
 
 /**
  * EmpruntDaoImpl
