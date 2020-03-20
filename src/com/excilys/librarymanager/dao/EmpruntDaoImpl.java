@@ -11,9 +11,7 @@ import java.util.List;
 
 import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.model.Emprunt;
-import com.excilys.librarymanager.model.Membre;
 import com.excilys.librarymanager.persistence.ConnectionManager;
-import com.excilys.librarymanager.utils.Abonnement;
 
 /**
  * EmpruntDaoImpl
@@ -32,7 +30,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
 
     private EmpruntDaoImpl() {}
 
-    public static EmpruntDaoImpl getInstance() {
+    public static EmpruntDao getInstance() {
         if(instance == null) {
             instance = new EmpruntDaoImpl();
         }
@@ -49,14 +47,14 @@ public class EmpruntDaoImpl implements EmpruntDao {
             connection = ConnectionManager.getConnection();
             preparedStatement = connection.prepareStatement(GET_ALL_QUERY);
             res = preparedStatement.executeQuery();
-            MembreDaoImpl membreDaoImpl = MembreDaoImpl.getInstance();
-            LivreDaoImpl livreDaoImpl = LivreDaoImpl.getInstance();
+            MembreDao membreDao = MembreDaoImpl.getInstance();
+            LivreDao livreDao = LivreDaoImpl.getInstance();
 			
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("idMembre")),
-                    livreDaoImpl.getById(res.getInt("idLivre")),
+                    membreDao.getById(res.getInt("idMembre")),
+                    livreDao.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
                     res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
@@ -98,14 +96,14 @@ public class EmpruntDaoImpl implements EmpruntDao {
             connection = ConnectionManager.getConnection();
             preparedStatement = connection.prepareStatement(GET_CURRENTS_QUERY);
             res = preparedStatement.executeQuery();
-            MembreDaoImpl membreDaoImpl = MembreDaoImpl.getInstance();
-            LivreDaoImpl livreDaoImpl = LivreDaoImpl.getInstance();
+            MembreDao membreDao = MembreDaoImpl.getInstance();
+            LivreDao livreDao = LivreDaoImpl.getInstance();
 
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("idMembre")),
-                    livreDaoImpl.getById(res.getInt("idLivre")),
+                    membreDao.getById(res.getInt("idMembre")),
+                    livreDao.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
                     res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
@@ -148,14 +146,14 @@ public class EmpruntDaoImpl implements EmpruntDao {
             preparedStatement = connection.prepareStatement(GET_CURRENTS_MEM_QUERY);
             preparedStatement.setInt(1, idMembre);
             res = preparedStatement.executeQuery();
-			MembreDaoImpl membreDaoImpl = MembreDaoImpl.getInstance();
-            LivreDaoImpl livreDaoImpl = LivreDaoImpl.getInstance();
+			MembreDao membreDao = MembreDaoImpl.getInstance();
+            LivreDao livreDao = LivreDaoImpl.getInstance();
 
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("idMembre")),
-                    livreDaoImpl.getById(res.getInt("idLivre")),
+                    membreDao.getById(res.getInt("idMembre")),
+                    livreDao.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
                     res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
@@ -198,14 +196,14 @@ public class EmpruntDaoImpl implements EmpruntDao {
             preparedStatement = connection.prepareStatement(GET_CURRENTS_LIV_QUERY);
             preparedStatement.setInt(1, idLivre);
             res = preparedStatement.executeQuery();
-            MembreDaoImpl membreDaoImpl = MembreDaoImpl.getInstance();
-            LivreDaoImpl livreDaoImpl = LivreDaoImpl.getInstance();
+            MembreDao membreDao = MembreDaoImpl.getInstance();
+            LivreDao livreDao = LivreDaoImpl.getInstance();
 
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("idMembre")),
-                    livreDaoImpl.getById(res.getInt("idLivre")),
+                    membreDao.getById(res.getInt("idMembre")),
+                    livreDao.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
                     res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
@@ -247,14 +245,14 @@ public class EmpruntDaoImpl implements EmpruntDao {
             preparedStatement = connection.prepareStatement(GET_QUERY);
             preparedStatement.setInt(1, id);
             res = preparedStatement.executeQuery();
-			MembreDaoImpl membreDaoImpl = MembreDaoImpl.getInstance();
-            LivreDaoImpl livreDaoImpl = LivreDaoImpl.getInstance();
+			MembreDao membreDao = MembreDaoImpl.getInstance();
+            LivreDao livreDao = LivreDaoImpl.getInstance();
 
 			if(res.next()) {
 				emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("idMembre")),
-                    livreDaoImpl.getById(res.getInt("idLivre")),
+                    membreDao.getById(res.getInt("idMembre")),
+                    livreDao.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
                     res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );

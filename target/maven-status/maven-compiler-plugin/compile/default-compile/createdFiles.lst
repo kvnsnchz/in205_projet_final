@@ -10,6 +10,7 @@ com/excilys/librarymanager/dao/EmpruntDao.class
 com/excilys/librarymanager/utils/EstablishConnection.class
 com/excilys/librarymanager/utils/Abonnement.class
 com/excilys/librarymanager/model/Emprunt.class
+com/excilys/test/ModeleTest.class
 com/excilys/librarymanager/persistence/ConnectionManager.class
 com/excilys/test/DaoTest.class
 com/excilys/librarymanager/dao/LivreDao.class

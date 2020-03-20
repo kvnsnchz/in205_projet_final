@@ -75,7 +75,6 @@ public class DaoTest {
         
         empruntDao.create(1, 1, LocalDate.now());
         Emprunt emprunt = empruntDao.getById(1);
-        System.out.println(emprunt);
         System.out.println("emprunt: id= " + emprunt.getId() + " dateRetour=" + emprunt.getDateEmprunt());
         
         emprunt.setDateRetour(LocalDate.now());
