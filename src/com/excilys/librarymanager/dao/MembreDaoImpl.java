@@ -142,7 +142,7 @@ public class MembreDaoImpl implements MembreDao {
             preparedStatement.setString(3, adresse);
             preparedStatement.setString(4, email);
             preparedStatement.setString(5, telephone);
-            preparedStatement.setString(6, null);
+            preparedStatement.setString(6, Abonnement.BASIC.toString());
 
             preparedStatement.executeUpdate();
             res = preparedStatement.getGeneratedKeys();
@@ -188,7 +188,7 @@ public class MembreDaoImpl implements MembreDao {
             preparedStatement.setString(6, membre.getAbonnement().toString());
             preparedStatement.setInt(7, membre.getId());
             
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("Problème lors de la mise à jour du membre: " + membre, e);
         } finally {
@@ -216,7 +216,7 @@ public class MembreDaoImpl implements MembreDao {
             preparedStatement = connection.prepareStatement(DELETE_QUERY);
             preparedStatement.setInt(1, id);
 
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("Problème lors de la suppression du membre: id= " + id, e);
         } finally {

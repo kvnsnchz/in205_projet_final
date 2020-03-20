@@ -28,7 +28,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
 	private static final String GET_QUERY = "SELECT e.id AS idEmprunt, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE e.id = ?;";
 	private static final String INSERT_QUERY = "INSERT INTO Emprunt (idMembre, idLivre, dateEmprunt, dateRetour) VALUES (?, ?, ?, ?);";
 	private static final String EDIT_QUERY = "UPDATE Emprunt SET idMembre=?, idLivre=?,dateEmprunt=?, dateRetour=? WHERE id=?;";
-	private static final String COUNT_QUERY = "SELECT COUNT(id) AS count FROM emprunt;";
+	private static final String COUNT_QUERY = "SELECT COUNT(id) AS quantity FROM emprunt;";
 
     private EmpruntDaoImpl() {}
 
@@ -44,7 +44,6 @@ public class EmpruntDaoImpl implements EmpruntDao {
         ResultSet res = null;
 		Connection connection = null;
         PreparedStatement preparedStatement = null;
-        
         List<Emprunt> emprunts = new ArrayList<>();
         try {
             connection = ConnectionManager.getConnection();
@@ -56,14 +55,15 @@ public class EmpruntDaoImpl implements EmpruntDao {
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("membre")),
-                    livreDaoImpl.getById(res.getInt("livre")),
+                    membreDaoImpl.getById(res.getInt("idMembre")),
+                    livreDaoImpl.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
-                    res.getDate("dateRetour").toLocalDate()
+                    res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
 
 				emprunts.add(emprunt);
-			}
+            }
+            
 
         } catch (SQLException e) {
             throw new DaoException("Problème lors de la récupération de la liste des emprunts", e);
@@ -104,10 +104,10 @@ public class EmpruntDaoImpl implements EmpruntDao {
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("membre")),
-                    livreDaoImpl.getById(res.getInt("livre")),
+                    membreDaoImpl.getById(res.getInt("idMembre")),
+                    livreDaoImpl.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
-                    res.getDate("dateRetour").toLocalDate()
+                    res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
 
 				emprunts.add(emprunt);
@@ -154,10 +154,10 @@ public class EmpruntDaoImpl implements EmpruntDao {
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("membre")),
-                    livreDaoImpl.getById(res.getInt("livre")),
+                    membreDaoImpl.getById(res.getInt("idMembre")),
+                    livreDaoImpl.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
-                    res.getDate("dateRetour").toLocalDate()
+                    res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
 
 				emprunts.add(emprunt);
@@ -204,10 +204,10 @@ public class EmpruntDaoImpl implements EmpruntDao {
 			while(res.next()) {
 				Emprunt emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("membre")),
-                    livreDaoImpl.getById(res.getInt("livre")),
+                    membreDaoImpl.getById(res.getInt("idMembre")),
+                    livreDaoImpl.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
-                    res.getDate("dateRetour").toLocalDate()
+                    res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
 
 				emprunts.add(emprunt);
@@ -253,10 +253,10 @@ public class EmpruntDaoImpl implements EmpruntDao {
 			if(res.next()) {
 				emprunt = new Emprunt(
                     res.getInt("id"), 
-                    membreDaoImpl.getById(res.getInt("membre")),
-                    livreDaoImpl.getById(res.getInt("livre")),
+                    membreDaoImpl.getById(res.getInt("idMembre")),
+                    livreDaoImpl.getById(res.getInt("idLivre")),
                     res.getDate("dateEmprunt").toLocalDate(),
-                    res.getDate("dateRetour").toLocalDate()
+                    res.getDate("dateRetour") != null ?  res.getDate("dateRetour").toLocalDate() : null
                 );
 			}
 
@@ -319,7 +319,6 @@ public class EmpruntDaoImpl implements EmpruntDao {
     public void update(Emprunt emprunt) throws DaoException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        List<Membre> membres = new ArrayList<>();
         try {
             connection = ConnectionManager.getConnection();
             preparedStatement = connection.prepareStatement(EDIT_QUERY);
@@ -329,7 +328,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
             preparedStatement.setDate(4, Date.valueOf(emprunt.getDateRetour()));
             preparedStatement.setInt(5, emprunt.getId());
             
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("Problème lors de la mise à jour du emprunt: " + emprunt, e);
         } finally {

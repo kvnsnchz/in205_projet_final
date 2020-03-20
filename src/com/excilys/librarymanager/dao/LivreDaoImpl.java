@@ -22,7 +22,7 @@ public class LivreDaoImpl implements LivreDao {
     
     private static final String INSERT_QUERY = "INSERT INTO livre (titre, auteur, isbn) values (?,?,?)";
     private static final String DELETE_QUERY = "DELETE FROM livre WHERE id=?";
-    private static final String EDIT_QUERY = "UPDATE livre SET nom=?, titre=?, auteur=?, isbn=? WHERE id=?";
+    private static final String EDIT_QUERY = "UPDATE livre SET titre=?, auteur=?, isbn=? WHERE id=?";
     private static final String GET_QUERY = "SELECT * FROM livre WHERE id=?";
     private static final String GET_ALL_QUERY = "SELECT * FROM livre";
     private static final String COUNT_QUERY = "SELECT COUNT(*) as quantity FROM livre";
@@ -89,6 +89,7 @@ public class LivreDaoImpl implements LivreDao {
         try {
             connection = ConnectionManager.getConnection();
             preparedStatement = connection.prepareStatement(GET_QUERY);
+            preparedStatement.setInt(1, id);
             res = preparedStatement.executeQuery();
             
             if(res.next()) {
@@ -177,8 +178,8 @@ public class LivreDaoImpl implements LivreDao {
             preparedStatement.setString(2, livre.getAuteur());
             preparedStatement.setString(3, livre.getIsbn());
             preparedStatement.setInt(4, livre.getId());
-           
-            preparedStatement.executeQuery();
+            
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             throw new DaoException("Problème lors de la mise à jour du livre: " + livre, e);
@@ -207,7 +208,7 @@ public class LivreDaoImpl implements LivreDao {
             preparedStatement = connection.prepareStatement(DELETE_QUERY);
             preparedStatement.setInt(1, id);
 
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("Problème lors de la suppression du livre: id= " + id, e);
         } finally {
