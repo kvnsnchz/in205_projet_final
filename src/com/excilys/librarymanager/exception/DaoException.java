@@ -1,6 +1,5 @@
 package com.excilys.librarymanager.exception;
 
-
 /**
  * DaoException
  */
