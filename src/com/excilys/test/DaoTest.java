@@ -88,9 +88,11 @@ public class DaoTest {
 		emprunts = empruntDao.getListCurrent();
         System.out.println("Taille de list de emprunts actuelle: " + emprunts.size());
         
+        livre = livreDao.getById(1);
 		emprunts = empruntDao.getListCurrentByLivre(1);
         System.out.println("Taille de list de emprunts actuelle de livre "+ livre.getTitre() +": " + emprunts.size());
         
+        membre = membreDao.getById(1);
 		emprunts = empruntDao.getListCurrentByMembre(1);
         System.out.println("Taille de list de emprunts actuelle de membre "+ membre.getNom() +": " + emprunts.size());
 
