@@ -21,11 +21,21 @@ public class ServiceTest {
 
     public static void main(String[] args) throws ServiceException {
  
-        System.out.println("\n--------Livre DAO--------\n");
+        System.out.println("\n--------Livre Service--------\n");
         LivreService livreService = LivreServiceImpl.getInstance();
+        
+        try {
+            int id = livreService.create("", "Javier", "non");
+            System.out.println("nouveau livre: id=" + id);   
+        } catch (ServiceException e) {
+            System.out.println(e.getMessage());
+        }
+
         int id = livreService.create("C++", "Javier", "non");
 		System.out.println("nouveau livre: id=" + id);
         
+        
+
         Livre livre = livreService.getById(id);
         System.out.println("Titre: " + livre.getTitre());
 
@@ -36,7 +46,7 @@ public class ServiceTest {
         
         List<Livre> livres = livreService.getList();
         System.out.println("Taille de list de livres: " + livres.size());
-        List<Livre> livresDispo = livreService.getList();
+        List<Livre> livresDispo = livreService.getListDispo();
         System.out.println("Taille de list de livres disponibles: " + livresDispo.size());
         
 		int count = livreService.count();
@@ -48,9 +58,15 @@ public class ServiceTest {
 
 
 
-        System.out.println("\n--------Membre DAO--------\n");
+        System.out.println("\n--------Membre Service--------\n");
         MembreService membreService = MembreServiceImpl.getInstance();
-        
+        try {
+            id = membreService.create("Diaz", null, "Massy", "kvn@gmail.com", "1234555");
+		    System.out.println("nouveau membre: id=" + id);  
+        } catch (ServiceException e) {
+            System.out.println(e.getMessage());
+        }
+
         id = membreService.create("Diaz", "Kevin", "Massy", "kvn@gmail.com", "1234555");
 		System.out.println("nouveau membre: id=" + id);
         
@@ -76,7 +92,7 @@ public class ServiceTest {
         
 
 
-        System.out.println("\n--------Emprunt DAO--------\n");
+        System.out.println("\n--------Emprunt Service--------\n");
 
 		EmpruntService empruntService = EmpruntServiceImpl.getInstance();
         

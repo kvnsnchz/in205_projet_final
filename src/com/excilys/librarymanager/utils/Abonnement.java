@@ -8,7 +8,7 @@ public enum Abonnement {
     PREMIUM(5),
     VIP(20);
  
-    public int val;
+    private int val;
     
     private Abonnement(int val)
     {

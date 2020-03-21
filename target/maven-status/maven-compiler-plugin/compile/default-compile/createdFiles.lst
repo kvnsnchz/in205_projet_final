@@ -7,6 +7,7 @@ com/excilys/librarymanager/exception/DaoException.class
 com/excilys/librarymanager/utils/FillDatabase.class
 com/excilys/librarymanager/service/EmpruntService.class
 com/excilys/librarymanager/dao/MembreDao.class
+com/excilys/test/ServiceTest.class
 com/excilys/librarymanager/model/Membre.class
 com/excilys/librarymanager/dao/EmpruntDao.class
 com/excilys/librarymanager/service/LivreServiceImpl.class

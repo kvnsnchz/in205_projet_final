@@ -20,4 +20,5 @@
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/service/MembreServiceImpl.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/dao/MembreDao.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/persistence/ConnectionManager.java
+/home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/test/ServiceTest.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/dao/LivreDao.java
