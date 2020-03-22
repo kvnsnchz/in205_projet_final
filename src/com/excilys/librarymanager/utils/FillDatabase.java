@@ -11,9 +11,22 @@ import org.h2.tools.DeleteDbFiles;
 
 import com.excilys.librarymanager.persistence.ConnectionManager;
 
+/**
+ * <b>FillDatabase</b>
+ * Class that initializes the data in the library database
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro.sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-10
+ */
 public class FillDatabase {
 
 
+    
+    /** 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         try {
             DeleteDbFiles.execute("~", "libraryManagerDatabase", true);
@@ -23,7 +36,11 @@ public class FillDatabase {
         }
     }
 
-	private static void insertWithPreparedStatement() throws SQLException {
+	
+    /** 
+     * @throws SQLException
+     */
+    private static void insertWithPreparedStatement() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         PreparedStatement createPreparedStatement = null;
 
