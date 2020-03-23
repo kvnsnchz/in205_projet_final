@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>D�tails du membre n�${membre.id}</h5> 
+      <h5>Détails du membre n°${membre.id}</h5> 
         <div class="row">
 	      <form action="membre_details?id=${membre.id}" method="post" class="col s12"> 
 	        <div class="row">
@@ -31,7 +32,7 @@
 	          </div>
 	          <div class="input-field col s4">
 	            <input id="prenom" type="text" value="${membre.prenom}" name="prenom"> 
-	            <label for="prenom">Pr�nom</label>
+	            <label for="prenom">Prénom</label>
 	          </div>
 	          <div class="input-field col s4">
 	            <select name="abonnement" class="browser-default">
@@ -54,7 +55,7 @@
 	          </div>
 	          <div class="input-field col s6">
 	            <input id="telephone" type="tel" value="${membre.telephone}" name="telephone"> 
-	            <label for="telephone">T�l�phone</label>
+	            <label for="telephone">Téléphone</label>
 	          </div>
 	        </div>
 	        <div class="row center">

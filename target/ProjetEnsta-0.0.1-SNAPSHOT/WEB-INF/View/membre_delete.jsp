@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -21,9 +22,9 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>Suppression du membre n�${membre.id}</h5> 
+      <h5>Suppression du membre n°${membre.id}</h5> 
         <div class="row">
-          <p>�tes-vous s�r de vouloir supprimer la fiche de ${membre.prenom} ${membre.nom} ?</p> 
+          <p>Étes-vous sûr de vouloir supprimer la fiche de ${membre.prenom} ${membre.nom} ?</p> 
 	      <form action="membre_delete" method="post" class="col s12">
             <input type="hidden" value="${membre.id}" name="id"> 
 	        <div class="row center">

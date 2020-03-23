@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
       </div>
       <div class="row">
       <div class="container">
-        <h5>S�lectionnez le livre � retourner</h5>
+        <h5>Sélectionnez le livre à retourner</h5>
         <div class="row">
 	      <form action="emprunt_return" method="post" class="col s12">
 	        <div class="row">
@@ -31,10 +32,10 @@
                 <c:if test="${! empty emprunts }">
                   <c:forEach var="emprunt" items="${emprunts}">
                     <c:if test="${emprunt.id == id}">
-                      <option value="${emprunt.id}" selected>"${emprunt.livre.titre}", emprunt� par ${emprunt.membre.prenom}  ${emprunt.membre.nom}</option>
+                      <option value="${emprunt.id}" selected>"${emprunt.livre.titre}", emprunté par ${emprunt.membre.prenom}  ${emprunt.membre.nom}</option>
                     </c:if>
                     <c:if test="${emprunt.id != id}">
-                      <option value="${emprunt.id}">"${emprunt.livre.titre}", emprunt� par ${emprunt.membre.prenom}  ${emprunt.membre.nom}</option>
+                      <option value="${emprunt.id}">"${emprunt.livre.titre}", emprunté par ${emprunt.membre.prenom}  ${emprunt.membre.nom}</option>
                     </c:if>
                   </c:forEach>
                 </c:if>
