@@ -86,4 +86,13 @@
     <servlet-name>MembreListServlet</servlet-name>
     <url-pattern>/membre_list</url-pattern>
   </servlet-mapping>
+  <!-- MembreDetailsServlet -->
+  <servlet>
+    <servlet-name>MembreDetailsServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.MembreDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreDetailsServlet</servlet-name>
+    <url-pattern>/membre_details</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -23,6 +23,7 @@ com/excilys/librarymanager/model/Livre.class
 com/excilys/librarymanager/exception/DaoException.class
 com/excilys/librarymanager/utils/FillDatabase.class
 com/excilys/librarymanager/servlet/EmpruntAddServlet.class
+com/excilys/librarymanager/servlet/MembreDetailsServlet.class
 com/excilys/librarymanager/model/Membre.class
 com/excilys/librarymanager/service/LivreServiceImpl.class
 com/excilys/librarymanager/service/EmpruntServiceImpl.class
