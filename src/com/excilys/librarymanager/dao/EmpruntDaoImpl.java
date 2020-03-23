@@ -31,7 +31,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
 	private static final String GET_QUERY = "SELECT e.id AS idEmprunt, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE e.id = ?;";
 	private static final String INSERT_QUERY = "INSERT INTO Emprunt (idMembre, idLivre, dateEmprunt, dateRetour) VALUES (?, ?, ?, ?);";
 	private static final String EDIT_QUERY = "UPDATE Emprunt SET idMembre=?, idLivre=?,dateEmprunt=?, dateRetour=? WHERE id=?;";
-	private static final String COUNT_QUERY = "SELECT COUNT(id) AS quantity FROM emprunt;";
+	private static final String COUNT_QUERY = "SELECT COUNT(*) AS quantity  FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre";
 
     private EmpruntDaoImpl() {}
 
