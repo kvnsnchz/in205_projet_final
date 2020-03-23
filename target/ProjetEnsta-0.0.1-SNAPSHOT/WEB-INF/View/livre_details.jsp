@@ -8,7 +8,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/custom.css?1.0.0" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -21,22 +21,22 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>Détails du livre n°${livre.id}</h5>
+      <h5>Dï¿½tails du livre nï¿½${livre.id}</h5>
         <div class="row">
-	      <form action="/LibraryManager/livre_details?id=idDuLivre" method="post" class="col s12"> <!-- TODO : remplacer idDuLivre par l'id du livre -->
+	      <form action="livre_details?id=${livre.id}" method="post" class="col s12"> 
 	        <div class="row">
 	          <div class="input-field col s12">
-	            <input id="titre" type="text" value="titreDuLivre" name="titre"> <!-- TODO : remplacer titreDuLivre par le titre du livre -->
+	            <input id="titre" type="text" value="${livre.titre}" name="titre">
 	            <label for="titre">Titre</label>
 	          </div>
 	        </div>
 	        <div class="row">
 	          <div class="input-field col s6">
-	            <input id="auteur" type="text" value="auteurDuLivre" name="auteur"> <!-- TODO : remplacer auteurDuLivre par l'auteur du livre -->
+	            <input id="auteur" type="text" value="${livre.auteur}" name="auteur">
 	            <label for="auteur">Auteur</label>
 	          </div>
 	          <div class="input-field col s6">
-	            <input id="isbn" type="text" value="isbnDuLivre" name="isbn"> <!-- TODO : remplacer isbnDuLivre par l'isbn du livre -->
+	            <input id="isbn" type="text" value="${livre.isbn}" name="isbn"> 
 	            <label for="isbn">ISBN 13</label>
 	          </div>
 	        </div>
@@ -46,8 +46,12 @@
 	        </div>
 	      </form>
 	      
-	      <form action="/LibraryManager/livre_delete" method="get" class="col s12">
-	        <input type="hidden" value="idDuLivre" name="id"> <!-- TODO : remplacer idDuLivre par l'id du livre -->
+        <c:if test="${error != null}">
+          <p class="error-message">${error}</p>
+        </c:if>
+        
+	      <form action="livre_delete" method="get" class="col s12">
+	        <input type="hidden" value="${livre.id}" name="id"> 
 	        <div class="row center">
 	          <button class="btn waves-effect waves-light red" type="submit">Supprimer le livre
 	            <i class="material-icons right">delete</i>
@@ -66,16 +70,17 @@
                 </tr>
               </thead>
               <tbody id="results">
-
-                <tr>
-                  <td>Prénom et nom du membre emprunteur</td>
-                  <td>Date de l'emprunt</td>
-                  <td>
-                    <a href="emprunt_return?id=idDeLEmprunt"><ion-icon class="table-item" name="log-in"></a>
-                  </td>
-                </tr>
-
-				<!-- TODO : parcourir la liste des emprunts en cours pour ce livre et les afficher selon la structure d'exemple ci-dessus -->
+                <c:if test="${! empty emprunts }">
+                  <c:forEach var="emprunt" items="${emprunts}">
+                    <tr>
+                      <td>${emprunt.membre.prenom}  ${emprunt.membre.nom}</td>
+                      <td>${emprunt.dateEmprunt}</td>
+                      <td>
+                        <a href="emprunt_return?id=${emprunt.id}"><ion-icon class="table-item" name="log-in"></a>
+                      </td>
+                    </tr>
+                  </c:forEach>
+                </c:if>
               </tbody>
             </table>
           </div>

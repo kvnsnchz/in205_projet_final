@@ -50,4 +50,13 @@
     <servlet-name>LivreListServlet</servlet-name>
     <url-pattern>/livre_list</url-pattern>
   </servlet-mapping>
+  <!-- LivreDetailsServlet -->
+  <servlet>
+    <servlet-name>LivreDetailsServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.LivreDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreDetailsServlet</servlet-name>
+    <url-pattern>/livre_details</url-pattern>
+  </servlet-mapping>
 </web-app>
