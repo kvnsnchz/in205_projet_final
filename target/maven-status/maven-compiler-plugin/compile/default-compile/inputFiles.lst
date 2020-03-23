@@ -8,8 +8,10 @@
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/service/LivreServiceImpl.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/model/Membre.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/utils/Abonnement.java
+/home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/servlet/MembreAddServlet.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/model/Livre.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/exception/DaoException.java
+/home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/utils/Util.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/service/MembreService.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/exception/ServiceException.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/model/Emprunt.java

@@ -1,5 +1,6 @@
 com/excilys/librarymanager/servlet/DashboardServlet.class
 com/excilys/librarymanager/service/LivreService.class
+com/excilys/librarymanager/utils/Util.class
 com/excilys/librarymanager/servlet/MembreListServlet.class
 com/excilys/librarymanager/servlet/EmpruntListServlet.class
 com/excilys/librarymanager/servlet/LivreListServlet.class
@@ -32,3 +33,4 @@ com/excilys/librarymanager/exception/ServiceException.class
 com/excilys/librarymanager/servlet/LivreDeleteServlet.class
 com/excilys/librarymanager/service/MembreService.class
 com/excilys/librarymanager/servlet/LivreAddServlet.class
+com/excilys/librarymanager/servlet/MembreAddServlet.class
