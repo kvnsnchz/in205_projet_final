@@ -1,7 +1,12 @@
 package com.excilys.librarymanager.model;
 
 /**
- * Livre
+ * <b>Livre</b>
+ * Model of a library book
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro.sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-10
  */
 public class Livre {
     private int id;
@@ -21,38 +26,83 @@ public class Livre {
         this.isbn = isbn;
     }
 
+    
+    /** 
+     * Return the book id
+     * @return int
+     */
     public int getId() {
         return this.id;
     }
 
+    
+    /** 
+     * Set the book id
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    
+    /** 
+     * Return the book title
+     * @return String
+     */
     public String getTitre() {
         return this.titre;
     }
 
+    
+    /**
+     * Set the book title 
+     * @param titre
+     */
     public void setTitre(String titre) {
         this.titre = titre;
     }
 
+    
+    /** 
+     * Return the book author
+     * @return String
+     */
     public String getAuteur() {
         return this.auteur;
     }
 
+    
+    /** 
+     * Set the book author
+     * @param auteur
+     */
     public void setAuteur(String auteur) {
         this.auteur = auteur;
     }
 
+    
+    /** 
+     * Return the book ISBN
+     * @return String
+     */
     public String getIsbn() {
         return this.isbn;
     }
 
+    
+    /** 
+     * Set the book ISBN
+     * @param isbn
+     */
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
+    
+    /** 
+     * Returns a string representation of the book
+     * @return String
+     */
     @Override
     public String toString() {
         return getClass().getSimpleName() + "{" +

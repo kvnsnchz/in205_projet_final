@@ -15,7 +15,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * LivreDaoImpl
+ * <b>LivreDaoImpl</b>
+ * Implementation of the book DAO
+ * 
+ * @author  Javier Martinez <i>[javier-andres.martinez@-boada@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-19
  */
 public class LivreDaoImpl implements LivreDao {
     private static LivreDaoImpl instance;
@@ -29,6 +34,11 @@ public class LivreDaoImpl implements LivreDao {
 
     private LivreDaoImpl() {}
 
+    
+    /** 
+     * Returns the current instance
+     * @return LivreDao
+     */
     public static LivreDao getInstance() {
         if(instance == null) {
             instance = new LivreDaoImpl();
@@ -36,6 +46,12 @@ public class LivreDaoImpl implements LivreDao {
         return instance;
     }
 
+    
+    /** 
+     * Return all books
+     * @return List<Livre>
+     * @throws DaoException
+     */
     @Override
     public List<Livre> getList() throws DaoException {
         List<Livre> livres = new ArrayList<>();
@@ -80,6 +96,13 @@ public class LivreDaoImpl implements LivreDao {
         return livres;
     }
 
+    
+    /** 
+     * Return the book by id
+     * @param id
+     * @return Livre
+     * @throws DaoException
+     */
     @Override
     public Livre getById(int id) throws DaoException {
         ResultSet res = null;
@@ -124,6 +147,15 @@ public class LivreDaoImpl implements LivreDao {
         return livre;
     }
 
+    
+    /** 
+     * Create a New book
+     * @param titre
+     * @param auteur
+     * @param isbn
+     * @return int
+     * @throws DaoException
+     */
     @Override
     public int create(String titre, String auteur, String isbn) throws DaoException {
         ResultSet res = null;
@@ -166,6 +198,12 @@ public class LivreDaoImpl implements LivreDao {
         return id;
     }
 
+    
+    /** 
+     * Update a book
+     * @param livre
+     * @throws DaoException
+     */
     @Override
     public void update(Livre livre) throws DaoException {
         Connection connection = null;
@@ -199,6 +237,12 @@ public class LivreDaoImpl implements LivreDao {
 
     }
 
+    
+    /** 
+     * Remove a book
+     * @param id
+     * @throws DaoException
+     */
     @Override
     public void delete(int id) throws DaoException {
 		Connection connection = null;
@@ -227,6 +271,12 @@ public class LivreDaoImpl implements LivreDao {
 
     }
 
+    
+    /** 
+     * Returns the amount of books
+     * @return int
+     * @throws DaoException
+     */
     @Override
     public int count() throws DaoException {
         ResultSet res = null;

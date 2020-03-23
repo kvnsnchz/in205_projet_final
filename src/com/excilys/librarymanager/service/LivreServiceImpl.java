@@ -11,13 +11,22 @@ import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.model.Livre;
 
 /**
- * LivreServiceImpl
+ * <b>LivreServiceImpl</b>
+ * Book service implementation
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro,sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-20
  */
 public class LivreServiceImpl implements LivreService {
     private static LivreServiceImpl instance;
 
     private LivreServiceImpl() {}
 
+    
+    /** 
+     * @return LivreService
+     */
     public static LivreService getInstance() {
         if(instance == null) {
             instance = new LivreServiceImpl();
@@ -25,6 +34,11 @@ public class LivreServiceImpl implements LivreService {
         return instance;
     } 
 
+    
+    /** 
+     * @return List<Livre>
+     * @throws ServiceException
+     */
     @Override
     public List<Livre> getList() throws ServiceException {
         LivreDao livreDao = LivreDaoImpl.getInstance();
@@ -37,6 +51,11 @@ public class LivreServiceImpl implements LivreService {
         return livres;
     }
 
+    
+    /** 
+     * @return List<Livre>
+     * @throws ServiceException
+     */
     @Override
 	public List<Livre> getListDispo() throws ServiceException {
         EmpruntService empruntService = EmpruntServiceImpl.getInstance();
@@ -52,6 +71,12 @@ public class LivreServiceImpl implements LivreService {
         return livres;
     }
 
+    
+    /** 
+     * @param id
+     * @return Livre
+     * @throws ServiceException
+     */
     @Override
 	public Livre getById(int id) throws ServiceException {
         LivreDao livreDao = LivreDaoImpl.getInstance();
@@ -64,6 +89,14 @@ public class LivreServiceImpl implements LivreService {
         return livre;
     }
 
+    
+    /** 
+     * @param titre
+     * @param auteur
+     * @param isbn
+     * @return int
+     * @throws ServiceException
+     */
     @Override
 	public int create(String titre, String auteur, String isbn) throws ServiceException {
         LivreDao livreDao = LivreDaoImpl.getInstance();
@@ -81,6 +114,11 @@ public class LivreServiceImpl implements LivreService {
         return i;
     }
 
+    
+    /** 
+     * @param livre
+     * @throws ServiceException
+     */
     @Override
 	public void update(Livre livre) throws ServiceException {
         LivreDao livreDao = LivreDaoImpl.getInstance();
@@ -96,6 +134,11 @@ public class LivreServiceImpl implements LivreService {
 		}
     }
 
+    
+    /** 
+     * @param id
+     * @throws ServiceException
+     */
     @Override
 	public void delete(int id) throws ServiceException {
         LivreDao livreDao = LivreDaoImpl.getInstance();
@@ -106,6 +149,11 @@ public class LivreServiceImpl implements LivreService {
 		}
     }
 
+    
+    /** 
+     * @return int
+     * @throws ServiceException
+     */
     @Override
 	public int count() throws ServiceException {
         LivreDao livreDao = LivreDaoImpl.getInstance();

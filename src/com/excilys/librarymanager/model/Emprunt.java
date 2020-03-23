@@ -3,11 +3,24 @@ package com.excilys.librarymanager.model;
 import java.time.LocalDate;
 
 /**
- * Emprunt
+ * <b>Emprunt</b>
+ * Model for a library lending 
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro.sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-10
  */
 public class Emprunt {
     private int id;
+    /**
+     * Associated member of the lending
+     * @see Membre
+     */
     private Membre membre;
+    /**
+     * Book of the lending
+     * @see Livre
+     */
     private Livre livre;
     private LocalDate dateEmprunt;
     private LocalDate dateRetour;
@@ -26,47 +39,102 @@ public class Emprunt {
     }
 
 
+    
+    /** 
+     * Return the lending id
+     * @return int
+     */
     public int getId() {
         return this.id;
     }
 
+    
+    /** 
+     * Set the lending id
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    
+    /** 
+     * Return the lending member
+     * @return Membre
+     */
     public Membre getMembre() {
         return this.membre;
     }
 
+    
+    /** 
+     * Set the lending member
+     * @param membre
+     */
     public void setMembre(Membre membre) {
         this.membre = membre;
     }
 
+    
+    /** 
+     * Return the lending book
+     * @return Livre
+     */
     public Livre getLivre() {
         return this.livre;
     }
 
+    
+    /** 
+     * Set the lending book
+     * @param livre
+     */
     public void setLivre(Livre livre) {
         this.livre = livre;
     }
 
+    
+    /** 
+     * Return the lending date  
+     * @return LocalDate
+     */
     public LocalDate getDateEmprunt() {
         return this.dateEmprunt;
     }
 
+    
+    /**
+     * Set the lending date  
+     * @param dateEmprunt
+     */
     public void setDateEmprunt(LocalDate dateEmprunt) {
         this.dateEmprunt = dateEmprunt;
     }
 
+    
+    /** 
+     * Return the lending return date 
+     * @return LocalDate
+     */
     public LocalDate getDateRetour() {
         return this.dateRetour;
     }
 
+    
+    /** 
+     * Set the lending return date 
+     * @param dateRetour
+     */
     public void setDateRetour(LocalDate dateRetour) {
         this.dateRetour = dateRetour;
     }
 
 
+    
+    /** 
+     * Returns a string representation of the lending
+     * @return String
+     */
     @Override
     public String toString() {
         return getClass().getSimpleName() + "{" +
