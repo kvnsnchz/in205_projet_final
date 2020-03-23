@@ -11,6 +11,7 @@ com/excilys/test/ModeleTest.class
 com/excilys/librarymanager/service/MembreServiceImpl.class
 com/excilys/librarymanager/persistence/ConnectionManager.class
 com/excilys/test/DaoTest.class
+com/excilys/librarymanager/servlet/EmpruntReturnServlet.class
 com/excilys/librarymanager/dao/LivreDao.class
 com/excilys/librarymanager/dao/LivreDaoImpl.class
 com/excilys/librarymanager/dao/EmpruntDaoImpl.class

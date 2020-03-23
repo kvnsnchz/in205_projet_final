@@ -62,9 +62,9 @@
 	        </div>
 	      </form>
 	    </div>
-        <c:if test="${error != null}">
-          <p class="error-message">${error}</p>
-        </c:if>
+      <c:if test="${error != null}">
+        <p class="error-message">${error}</p>
+      </c:if>
       </div>
       </div>
     </section>
