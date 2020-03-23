@@ -5,4 +5,16 @@
     <error-code>500</error-code>
     <location>/WEB-INF/View/error_500.jsp</location>
   </error-page>
+  <servlet>
+    <!-- Le nom de votre Servlet -->
+    <servlet-name>DashboardServlet</servlet-name>
+    <!-- le chemin de votre Servlet dans votre application -->
+    <servlet-class>com.excilys.librarymanager.servlet.DashboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <!-- Référence au nom de la Servlet -->
+    <servlet-name>DashboardServlet</servlet-name>
+    <!-- URL à partir de laquelle votre Servlet sera accessible -->
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
 </web-app>
