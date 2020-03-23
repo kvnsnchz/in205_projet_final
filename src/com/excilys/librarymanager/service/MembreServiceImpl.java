@@ -11,13 +11,22 @@ import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.model.Membre;
 
 /**
- * MembreServiceImpl
+ * <b>MembreServiceImpl</b>
+ * Member service implementation
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro,sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-20
  */
 public class MembreServiceImpl implements MembreService {
     private static MembreServiceImpl instance;
 
     private MembreServiceImpl() {}
 
+    
+    /** 
+     * @return MembreService
+     */
     public static MembreService getInstance() {
         if(instance == null) {
             instance = new MembreServiceImpl();
@@ -25,6 +34,11 @@ public class MembreServiceImpl implements MembreService {
         return instance;
     }
     
+    
+    /** 
+     * @return List<Membre>
+     * @throws ServiceException
+     */
     @Override
     public List<Membre> getList() throws ServiceException {
         MembreDao membreDao = MembreDaoImpl.getInstance();
@@ -37,6 +51,11 @@ public class MembreServiceImpl implements MembreService {
         return membres;
     }
 
+    
+    /** 
+     * @return List<Membre>
+     * @throws ServiceException
+     */
     @Override
 	public List<Membre> getListMembreEmpruntPossible() throws ServiceException {
         EmpruntService empruntService = EmpruntServiceImpl.getInstance();
@@ -52,6 +71,12 @@ public class MembreServiceImpl implements MembreService {
         return membres;
     }
 
+    
+    /** 
+     * @param id
+     * @return Membre
+     * @throws ServiceException
+     */
     @Override
 	public Membre getById(int id) throws ServiceException {
         MembreDao membreDao = MembreDaoImpl.getInstance();
@@ -64,6 +89,16 @@ public class MembreServiceImpl implements MembreService {
         return membre;
     }
 
+    
+    /** 
+     * @param nom
+     * @param prenom
+     * @param adresse
+     * @param email
+     * @param telephone
+     * @return int
+     * @throws ServiceException
+     */
     @Override
 	public int create(String nom, String prenom, String adresse, String email, String telephone) throws ServiceException {
         MembreDao membreDao = MembreDaoImpl.getInstance();
@@ -81,6 +116,11 @@ public class MembreServiceImpl implements MembreService {
         return i;
     }
 
+    
+    /** 
+     * @param membre
+     * @throws ServiceException
+     */
     @Override
 	public void update(Membre membre) throws ServiceException {
         MembreDao membreDao = MembreDaoImpl.getInstance();
@@ -97,6 +137,11 @@ public class MembreServiceImpl implements MembreService {
 		}
     }
 
+    
+    /** 
+     * @param id
+     * @throws ServiceException
+     */
     @Override
 	public void delete(int id) throws ServiceException {
         MembreDao membreDao = MembreDaoImpl.getInstance();
@@ -107,6 +152,11 @@ public class MembreServiceImpl implements MembreService {
 		}
     }
 
+    
+    /** 
+     * @return int
+     * @throws ServiceException
+     */
     @Override
 	public int count() throws ServiceException {
         MembreDao membreDao = MembreDaoImpl.getInstance();

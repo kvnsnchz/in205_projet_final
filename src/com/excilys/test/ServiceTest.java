@@ -13,12 +13,21 @@ import com.excilys.librarymanager.service.LivreService;
 import com.excilys.librarymanager.service.LivreServiceImpl;
 import com.excilys.librarymanager.service.MembreService;
 import com.excilys.librarymanager.service.MembreServiceImpl;
-
 /**
- * ServiceTest
+ * <b>ServiceTest</b>
+ * Class testing library services
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro,sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-20
  */
 public class ServiceTest {
 
+    
+    /** 
+     * @param args
+     * @throws ServiceException
+     */
     public static void main(String[] args) throws ServiceException {
  
         System.out.println("\n--------Livre Service--------\n");
