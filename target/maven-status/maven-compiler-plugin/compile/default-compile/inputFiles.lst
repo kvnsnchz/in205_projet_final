@@ -3,6 +3,7 @@
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/servlet/LivreAddServlet.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/utils/EstablishConnection.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/utils/FillDatabase.java
+/home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/servlet/LivreDeleteServlet.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/service/LivreServiceImpl.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/model/Membre.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/utils/Abonnement.java

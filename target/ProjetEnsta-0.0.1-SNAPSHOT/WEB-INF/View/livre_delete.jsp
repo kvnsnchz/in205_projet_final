@@ -8,7 +8,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/custom.css?1.0.0" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -21,19 +21,22 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>Suppression du livre n°42</h5> <!-- TODO : afficher l'id du livre au lieu de 42 -->
+      <h5>Suppression du livre nï¿½${livre.id}</h5> 
         <div class="row">
-          <p>Êtes-vous sûr de vouloir supprimer le livre TitreDuLivre de NomDeLAuteur (code isbnDuLivre) ?</p> <!-- TODO : compléter les trois informations ci-contre -->
-	      <form action="/LibraryManager/livre_delete" method="post" class="col s12">
-            <input type="hidden" value="idDuLivre" name="id"> <!-- TODO : remplacer idDuLivre par l'id du livre -->
+          <p>ï¿½tes-vous sï¿½r de vouloir supprimer le livre ${livre.titre} de ${livre.auteur} (code ${livre.isbn}) ?</p> 
+	      <form action="livre_delete" method="post" class="col s12">
+            <input type="hidden" value="${livre.id}" name="id">
 	        <div class="row center">
 	          <button class="btn waves-effect waves-light red" type="submit">Supprimer
 	            <i class="material-icons right">delete</i>
 	          </button>
-	          <a class="btn waves-effect waves-light orange" href="/LibraryManager/livre_details?id=idDuLivre">Annuler</a> <!-- TODO : remplacer idDuLivre par l'id du livre -->
+	          <a class="btn waves-effect waves-light orange" href="livre_details?id=${livre.id}">Annuler</a> 
 	        </div>
 	      </form>
-	    </div>	    
+	    </div>	
+      <c:if test="${error != null}">
+        <p class="error-message">${error}</p>
+      </c:if>    
       </div>
       </div>
     </section>

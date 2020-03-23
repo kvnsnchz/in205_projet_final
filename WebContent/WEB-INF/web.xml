@@ -68,4 +68,13 @@
     <servlet-name>LivreAddServlet</servlet-name>
     <url-pattern>/livre_add</url-pattern>
   </servlet-mapping>
+  <!-- LivreDeleteServlet -->
+  <servlet>
+    <servlet-name>LivreDeleteServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.LivreDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreDeleteServlet</servlet-name>
+    <url-pattern>/livre_delete</url-pattern>
+  </servlet-mapping>
 </web-app>
