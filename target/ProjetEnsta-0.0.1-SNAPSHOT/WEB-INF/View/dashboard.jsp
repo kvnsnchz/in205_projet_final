@@ -23,7 +23,7 @@
         <div class="col l4 s6">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${numberOfMembres}</h3> <!-- TODO : afficher le nombre de membres � la place de 12 -->
+              <h3>${numberOfMembres}</h3> 
               <p>Membres</p>
             </div>
             <div class="icon">
@@ -35,7 +35,7 @@
         <div class="col l4 s6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${numberOfLivres}</h3> <!-- TODO : afficher le nombre de livres � la place de 27 -->
+              <h3>${numberOfLivres}</h3> 
               <p>Livres</p>
             </div>
             <div class="icon">
@@ -47,7 +47,7 @@
         <div class="col l4 s6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>${numberOfEmprunts}</h3> <!-- TODO : afficher le nombre d'emprunts � la place de 1515 -->
+              <h3>${numberOfEmprunts}</h3> 
               <p>Emprunts</p>
             </div>
             <div class="icon">
@@ -81,7 +81,6 @@
                         </tr>
                       </c:forEach>
                     </c:if>
-                     <!-- TODO : parcourir la liste des emprunts en cours et les afficher selon la structure d'exemple ci-dessus -->
                 </tbody>
             </table>
           </div>

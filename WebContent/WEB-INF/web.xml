@@ -29,4 +29,16 @@
     <!-- URL à partir de laquelle votre Servlet sera accessible -->
     <url-pattern>/emprunt_add</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <!-- Le nom de votre Servlet -->
+    <servlet-name>EmpruntListServlet</servlet-name>
+    <!-- le chemin de votre Servlet dans votre application -->
+    <servlet-class>com.excilys.librarymanager.servlet.EmpruntListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <!-- Référence au nom de la Servlet -->
+    <servlet-name>EmpruntListServlet</servlet-name>
+    <!-- URL à partir de laquelle votre Servlet sera accessible -->
+    <url-pattern>/emprunt_list</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -28,7 +28,6 @@
 	          <div class="input-field col s6">
 	            <select id="idLivre" name="idLivre" class="browser-default" value="${idLivre}">
 	              <option value="" disabled selected>-- Livres --</option>
-	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que n�cessaire, sur la base de l'exemple ci-dessous -->
                 <c:if test="${! empty livres }">
                   <c:forEach var="livre" items="${livres}">
                     <c:if test="${livre.id == idLivre}">
@@ -44,7 +43,6 @@
 	          <div class="input-field col s6">
 	            <select id="idMembre" name="idMembre" class="browser-default" value="${idMembre}">
 	              <option value="" disabled selected>-- Membres --</option>
-	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que n�cessaire, sur la base de l'exemple ci-dessous -->
                 <c:if test="${! empty membres }">
                   <c:forEach var="membre" items="${membres}">
                     <c:if test="${membre.id == idMembre}">
