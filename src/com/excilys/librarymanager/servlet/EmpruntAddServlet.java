@@ -23,12 +23,24 @@ import com.excilys.librarymanager.service.MembreService;
 import com.excilys.librarymanager.service.MembreServiceImpl;
 
 /**
- * EmpruntAddServlet
+ * <b>EmpruntAddServlet</b>
+ * Add lending viewer
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro,sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-23
  */
 public class EmpruntAddServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LivreService livreService = LivreServiceImpl.getInstance();
@@ -60,6 +72,13 @@ public class EmpruntAddServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EmpruntService empruntService = EmpruntServiceImpl.getInstance();

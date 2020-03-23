@@ -15,7 +15,12 @@ import com.excilys.librarymanager.service.LivreServiceImpl;
 import com.excilys.librarymanager.utils.Util;
 
 /**
- * LivreAddServlet
+ * <b>LivreAddServlet</b>
+ * Book add viewer
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro,sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-23
  */
 public class LivreAddServlet extends HttpServlet {
 

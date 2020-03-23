@@ -15,12 +15,24 @@ import com.excilys.librarymanager.service.MembreService;
 import com.excilys.librarymanager.service.MembreServiceImpl;
 
 /**
- * MembreDeleteServlet
+ * <b>MembreDeleteServlet</b>
+ * Remove member viewer
+ * 
+ * @author  Kevin Sanchez <i>[kevin-alexandro,sanchez-diaz@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-23
  */
 public class MembreDeleteServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MembreService membreService = MembreServiceImpl.getInstance();
@@ -52,6 +64,13 @@ public class MembreDeleteServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    
+    /** 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MembreService membreService = MembreServiceImpl.getInstance();
