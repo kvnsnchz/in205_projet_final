@@ -1,6 +1,7 @@
 com/excilys/librarymanager/servlet/DashboardServlet.class
 com/excilys/librarymanager/service/LivreService.class
 com/excilys/librarymanager/servlet/EmpruntListServlet.class
+com/excilys/librarymanager/servlet/LivreListServlet.class
 com/excilys/librarymanager/service/EmpruntService.class
 com/excilys/librarymanager/dao/MembreDao.class
 com/excilys/test/ServiceTest.class
