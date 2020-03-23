@@ -8,7 +8,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/custom.css?1.0.0" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -21,22 +21,40 @@
       </div>
       <div class="row">
       <div class="container">
-        <h5>Sélectionnez le livre et le membre emprunteur</h5>
+        <h5>Sï¿½lectionnez le livre et le membre emprunteur</h5>
         <div class="row">
-	      <form action="/LibraryManager/emprunt_add" method="post" class="col s12">
+	      <form action="emprunt_add" method="post" class="col s12">
 	        <div class="row">
 	          <div class="input-field col s6">
-	            <select id="idLivre" name="idLivre" class="browser-default">
+	            <select id="idLivre" name="idLivre" class="browser-default" value="${idLivre}">
 	              <option value="" disabled selected>-- Livres --</option>
-	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuLivre">"Titre du livre", de Nom de l'auteur</option>
+	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que nï¿½cessaire, sur la base de l'exemple ci-dessous -->
+                <c:if test="${! empty livres }">
+                  <c:forEach var="livre" items="${livres}">
+                    <c:if test="${livre.id == idLivre}">
+                      <option value="${livre.id}" selected>"${livre.titre}", de ${livre.auteur}</option>
+                    </c:if>
+                    <c:if test="${livre.id != idLivre}">
+                      <option value="${livre.id}">"${livre.titre}", de ${livre.auteur}</option>
+                    </c:if>
+                  </c:forEach>
+                </c:if>
 	            </select>
 	          </div>
 	          <div class="input-field col s6">
-	            <select id="idMembre" name="idMembre" class="browser-default">
+	            <select id="idMembre" name="idMembre" class="browser-default" value="${idMembre}">
 	              <option value="" disabled selected>-- Membres --</option>
-	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuMembre">Prénom et nom du membre</option>
+	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que nï¿½cessaire, sur la base de l'exemple ci-dessous -->
+                <c:if test="${! empty membres }">
+                  <c:forEach var="membre" items="${membres}">
+                    <c:if test="${membre.id == idMembre}">
+                      <option value="${membre.id}" selected>${membre.prenom}  ${membre.nom}</option>
+                    </c:if>
+                    <c:if test="${membre.id != idMembre}">
+                      <option value="${membre.id}">${membre.prenom}  ${membre.nom}</option>
+                    </c:if>
+                  </c:forEach>
+                </c:if>
 	            </select>
 	          </div>
 	        </div>
@@ -46,6 +64,9 @@
 	        </div>
 	      </form>
 	    </div>
+        <c:if test="${error != null}">
+          <p class="error-message">${error}</p>
+        </c:if>
       </div>
       </div>
     </section>

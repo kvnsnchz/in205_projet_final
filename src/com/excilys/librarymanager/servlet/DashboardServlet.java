@@ -41,7 +41,7 @@ public class DashboardServlet extends HttpServlet {
             numberOfLivres = livreService.count();
             numberOfMembres = membreService.count();
             numberOfEmprunts = empruntService.count();
-			emprunts =  empruntService.getList();
+			emprunts =  empruntService.getListCurrent();
 		} catch (ServiceException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();

@@ -20,6 +20,7 @@
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/test/ModeleTest.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/service/LivreService.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/dao/EmpruntDaoImpl.java
+/home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/servlet/EmpruntAddServlet.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/dao/MembreDao.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/librarymanager/persistence/ConnectionManager.java
 /home/kvnsnchz/Documents/ENSTA/App_Mobiles/in205_projet_final/src/com/excilys/test/ServiceTest.java

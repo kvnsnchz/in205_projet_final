@@ -69,15 +69,6 @@
                     </tr>
                 </thead>
                 <tbody id="results">
-                
-                    <tr>
-                        <td>Titre du livre, <em>de Nom de l'auteur</em></td>
-                        <td>Pr�nom et nom du membre emprunteur</td>
-                        <td>Date de l'emprunt</td>
-                        <td>
-                            <a href="emprunt_return?id=idDeLEmprunt"><ion-icon class="table-item" name="log-in"></a>
-                        </td>
-                    </tr>
                     <c:if test="${! empty emprunts }">
                       <c:forEach var="emprunt" items="${emprunts}">
                         <tr>
