@@ -14,7 +14,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * MembreDaoImpl
+ * <b>MembreDaoImpl</b>
+ * Implementation of the member DAO
+ * 
+ * @author  Javier Martinez <i>[javier-andres.martinez@-boada@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-19
  */
 public class MembreDaoImpl implements MembreDao {
     private static MembreDaoImpl instance;
@@ -28,6 +33,11 @@ public class MembreDaoImpl implements MembreDao {
     
     private MembreDaoImpl() {}
 
+    
+    /** 
+     * Returns the current instance
+     * @return MembreDao
+     */
     public static MembreDao getInstance() {
         if(instance == null) {
             instance = new MembreDaoImpl();
@@ -35,6 +45,12 @@ public class MembreDaoImpl implements MembreDao {
         return instance;
     }
 
+    
+    /** 
+     * Return all members
+     * @return List<Membre>
+     * @throws DaoException
+     */
     @Override
     public List<Membre> getList() throws DaoException {
         ResultSet res = null;
@@ -82,6 +98,13 @@ public class MembreDaoImpl implements MembreDao {
         return membres;
     }
 
+    
+    /** 
+     * Return the member by id
+     * @param id
+     * @return Membre
+     * @throws DaoException
+     */
     @Override
     public Membre getById(int id) throws DaoException {
         ResultSet res = null;
@@ -127,6 +150,17 @@ public class MembreDaoImpl implements MembreDao {
         return membre;
     }
 
+    
+    /** 
+     * Create a new member
+     * @param nom
+     * @param prenom
+     * @param adresse
+     * @param email
+     * @param telephone
+     * @return int
+     * @throws DaoException
+     */
     @Override
     public int create(String nom, String prenom, String adresse, String email, String telephone) throws DaoException {
         ResultSet res = null;
@@ -172,6 +206,12 @@ public class MembreDaoImpl implements MembreDao {
         return id;
     }
 
+    
+    /** 
+     * Update a member
+     * @param membre
+     * @throws DaoException
+     */
     @Override
     public void update(Membre membre) throws DaoException {
 		Connection connection = null;
@@ -207,6 +247,12 @@ public class MembreDaoImpl implements MembreDao {
 
     }
 
+    
+    /** 
+     * Remove a member
+     * @param id
+     * @throws DaoException
+     */
     @Override
     public void delete(int id) throws DaoException {
 		Connection connection = null;
@@ -235,6 +281,12 @@ public class MembreDaoImpl implements MembreDao {
 
     }
 
+    
+    /** 
+     * Returns the amount of members
+     * @return int
+     * @throws DaoException
+     */
     @Override
     public int count() throws DaoException {
         ResultSet res = null;

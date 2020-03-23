@@ -38,6 +38,7 @@ public class FillDatabase {
 
 	
     /** 
+     * Generates the library's database
      * @throws SQLException
      */
     private static void insertWithPreparedStatement() throws SQLException {

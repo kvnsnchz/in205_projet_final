@@ -14,7 +14,12 @@ import com.excilys.librarymanager.model.Emprunt;
 import com.excilys.librarymanager.persistence.ConnectionManager;
 
 /**
- * EmpruntDaoImpl
+ * <b>EmpruntDaoImpl</b>
+ * Implementation of the lending DAO
+ * 
+ * @author  Javier Martinez <i>[javier-andres.martinez@-boada@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-19
  */
 public class EmpruntDaoImpl implements EmpruntDao {
     private static EmpruntDaoImpl instance;
@@ -30,6 +35,11 @@ public class EmpruntDaoImpl implements EmpruntDao {
 
     private EmpruntDaoImpl() {}
 
+    
+    /** 
+     * Returns the current instance
+     * @return EmpruntDao
+     */
     public static EmpruntDao getInstance() {
         if(instance == null) {
             instance = new EmpruntDaoImpl();
@@ -37,6 +47,12 @@ public class EmpruntDaoImpl implements EmpruntDao {
         return instance;
     }
 
+    
+    /** 
+     * Return all lendings
+     * @return List<Emprunt>
+     * @throws DaoException
+     */
     @Override
     public List<Emprunt> getList() throws DaoException {
         ResultSet res = null;
@@ -86,6 +102,12 @@ public class EmpruntDaoImpl implements EmpruntDao {
         return emprunts;
     }
 
+    
+    /** 
+     * Return all unreturned (active) lendings
+     * @return List<Emprunt>
+     * @throws DaoException
+     */
     @Override
     public List<Emprunt> getListCurrent() throws DaoException {
         ResultSet res = null;
@@ -135,6 +157,13 @@ public class EmpruntDaoImpl implements EmpruntDao {
         return emprunts;
     }
 
+    
+    /** 
+     * Return all lendings per member
+     * @param idMembre
+     * @return List<Emprunt>
+     * @throws DaoException
+     */
     @Override
     public List<Emprunt> getListCurrentByMembre(int idMembre) throws DaoException {
         ResultSet res = null;
@@ -185,6 +214,13 @@ public class EmpruntDaoImpl implements EmpruntDao {
         return emprunts;
     }
 
+    
+    /** 
+     * Return all lendings per book
+     * @param idLivre
+     * @return List<Emprunt>
+     * @throws DaoException
+     */
     @Override
     public List<Emprunt> getListCurrentByLivre(int idLivre) throws DaoException {
         ResultSet res = null;
@@ -234,6 +270,13 @@ public class EmpruntDaoImpl implements EmpruntDao {
         return emprunts;
     }
 
+    
+    /** 
+     * Return the lending by id
+     * @param id
+     * @return Emprunt
+     * @throws DaoException
+     */
     @Override
     public Emprunt getById(int id) throws DaoException {
         ResultSet res = null;
@@ -282,6 +325,14 @@ public class EmpruntDaoImpl implements EmpruntDao {
         return emprunt;
     }
 
+    
+    /** 
+     * Create a New lending
+     * @param idMembre
+     * @param idLivre
+     * @param dateEmprunt
+     * @throws DaoException
+     */
     @Override
     public void create(int idMembre, int idLivre, LocalDate dateEmprunt) throws DaoException {
         Connection connection = null;
@@ -313,6 +364,12 @@ public class EmpruntDaoImpl implements EmpruntDao {
         }
     }
 
+    
+    /** 
+     * Update a lending
+     * @param emprunt
+     * @throws DaoException
+     */
     @Override
     public void update(Emprunt emprunt) throws DaoException {
         Connection connection = null;
@@ -343,6 +400,12 @@ public class EmpruntDaoImpl implements EmpruntDao {
         }
     }
 
+    
+    /** 
+     * Returns the amount of lendings
+     * @return int
+     * @throws DaoException
+     */
     @Override
     public int count() throws DaoException {
         ResultSet res = null;
