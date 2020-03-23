@@ -4,6 +4,14 @@ import java.util.List;
 import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.model.Membre;
 
+/**
+ * <b>MembreDao</b>
+ * Data access object of member
+ * 
+ * @author  Javier Martinez <i>[javier-andres.martinez@-boada@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-19
+ */
 public interface MembreDao {
 	public List<Membre> getList() throws DaoException;
 	public Membre getById(int id) throws DaoException;

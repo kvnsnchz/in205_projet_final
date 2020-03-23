@@ -14,8 +14,21 @@ import com.excilys.librarymanager.model.Emprunt;
 import com.excilys.librarymanager.model.Livre;
 import com.excilys.librarymanager.model.Membre;
 
+/**
+ * <b>DaoTest</b>
+ * Class testing library DAO
+ * 
+ * @author  Javier Martinez <i>[javier-andres.martinez@-boada@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-19
+ */
 public class DaoTest {
 
+    
+    /** 
+     * @param args
+     * @throws DaoException
+     */
     public static void main(String[] args) throws DaoException {
 
         System.out.println("\n--------Livre DAO--------\n");
