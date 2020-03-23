@@ -65,17 +65,10 @@ public class LivreDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LivreService livreService = LivreServiceImpl.getInstance();
 
-        try {
-            int id = -1;
-            try {
-                id = Integer.parseInt(request.getParameter("id"));
-            } catch (NumberFormatException | NullPointerException e) {
-                throw new ServletException("Problème lors de la mis à jour du livre");
-            } 
-                
+        try {  
             try {
                 livreService.update(new Livre(
-                    id,
+                    Integer.parseInt(request.getParameter("id")),
                     request.getParameter("titre"),
                     request.getParameter("auteur"),
                     request.getParameter("isbn")

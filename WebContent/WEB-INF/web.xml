@@ -77,4 +77,13 @@
     <servlet-name>LivreDeleteServlet</servlet-name>
     <url-pattern>/livre_delete</url-pattern>
   </servlet-mapping>
+  <!-- MembreListServlet -->
+  <servlet>
+    <servlet-name>MembreListServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.MembreListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreListServlet</servlet-name>
+    <url-pattern>/membre_list</url-pattern>
+  </servlet-mapping>
 </web-app>
