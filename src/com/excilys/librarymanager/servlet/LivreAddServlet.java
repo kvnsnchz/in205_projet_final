@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.excilys.librarymanager.exception.ServiceException;
 import com.excilys.librarymanager.service.LivreService;
 import com.excilys.librarymanager.service.LivreServiceImpl;
+import com.excilys.librarymanager.utils.Util;
 
 /**
  * LivreAddServlet
@@ -23,14 +24,12 @@ public class LivreAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        request.setAttribute("error", session.getAttribute("error"));
-        request.setAttribute("titre", session.getAttribute("titre"));
-        request.setAttribute("auteur", session.getAttribute("auteur"));
-        request.setAttribute("isbn", session.getAttribute("isbn"));
-        session.removeAttribute("error");
-        session.removeAttribute("titre");
-        session.removeAttribute("auteur");
-        session.removeAttribute("isbn");
+        Util.setAttributesWithSession(request, new String[]{
+            "error",
+            "titre",
+            "auteur",
+            "isbn",
+        });
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/View/livre_add.jsp");
         dispatcher.forward(request, response);

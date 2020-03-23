@@ -67,7 +67,7 @@
 			<p class="error-message">${error}</p>
 		  </c:if>
 
-	      <form action="/LibraryManager/membre_delete" method="get" class="col s12">
+	      <form action="membre_delete" method="get" class="col s12">
 	        <input type="hidden" value="${membre.id}" name="id"> 
 	        <div class="row center">
 	          <button class="btn waves-effect waves-light red" type="submit">Supprimer le membre

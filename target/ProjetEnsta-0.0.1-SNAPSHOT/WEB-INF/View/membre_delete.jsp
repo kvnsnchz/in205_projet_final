@@ -8,7 +8,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/custom.css?1.0.0" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -21,19 +21,22 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>Suppression du membre n°312</h5> <!-- TODO : remplacer 312 par l'id du membre -->
+      <h5>Suppression du membre nï¿½${membre.id}</h5> 
         <div class="row">
-          <p>Êtes-vous sûr de vouloir supprimer la fiche de prenomDuMembre nomDuMembre ?</p> <!-- TODO : remplacer prenomDuMembre et nomDuMembre par les valeurs correspondantes -->
-	      <form action="/LibraryManager/membre_delete" method="post" class="col s12">
-            <input type="hidden" value="idDuMembre" name="id"> <!-- TODO : remplacer idDuMembre par l'id du membre -->
+          <p>ï¿½tes-vous sï¿½r de vouloir supprimer la fiche de ${membre.prenom} ${membre.nom} ?</p> 
+	      <form action="membre_delete" method="post" class="col s12">
+            <input type="hidden" value="${membre.id}" name="id"> 
 	        <div class="row center">
 	          <button class="btn waves-effect waves-light red" type="submit" name="action">Supprimer
 	            <i class="material-icons right">delete</i>
 	          </button>
-	          <a class="btn waves-effect waves-light orange" href="/LibraryManager/membre_details?id=idDuMembre">Annuler</a> <!-- TODO : remplacer idDuMembre par l'id du membre -->
+	          <a class="btn waves-effect waves-light orange" href="membre_details?id=${membre.id}">Annuler</a> 
 	        </div>
 	      </form>
-	    </div>	    
+	    </div>	
+      <c:if test="${error != null}">
+        <p class="error-message">${error}</p>
+      </c:if>     
       </div>
       </div>
     </section>
