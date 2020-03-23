@@ -6,14 +6,13 @@ com/excilys/librarymanager/servlet/EmpruntListServlet.class
 com/excilys/librarymanager/servlet/LivreListServlet.class
 com/excilys/librarymanager/service/EmpruntService.class
 com/excilys/librarymanager/dao/MembreDao.class
-com/excilys/test/ServiceTest.class
 com/excilys/librarymanager/dao/EmpruntDao.class
 com/excilys/librarymanager/utils/EstablishConnection.class
 com/excilys/librarymanager/model/Emprunt.class
-com/excilys/test/ModeleTest.class
 com/excilys/librarymanager/service/MembreServiceImpl.class
+com/excilys/librarymanager/test/ServiceTest.class
+com/excilys/librarymanager/test/ModeleTest.class
 com/excilys/librarymanager/persistence/ConnectionManager.class
-com/excilys/test/DaoTest.class
 com/excilys/librarymanager/servlet/EmpruntReturnServlet.class
 com/excilys/librarymanager/dao/LivreDao.class
 com/excilys/librarymanager/servlet/MembreDeleteServlet.class
@@ -30,6 +29,7 @@ com/excilys/librarymanager/model/Membre.class
 com/excilys/librarymanager/service/LivreServiceImpl.class
 com/excilys/librarymanager/service/EmpruntServiceImpl.class
 com/excilys/librarymanager/utils/Abonnement.class
+com/excilys/librarymanager/test/DaoTest.class
 com/excilys/librarymanager/exception/ServiceException.class
 com/excilys/librarymanager/servlet/LivreDeleteServlet.class
 com/excilys/librarymanager/service/MembreService.class
