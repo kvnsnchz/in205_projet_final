@@ -1,4 +1,4 @@
-package com.excilys.test;
+package com.excilys.librarymanager.test;
 
 import com.excilys.librarymanager.model.Emprunt;
 import com.excilys.librarymanager.model.Livre;

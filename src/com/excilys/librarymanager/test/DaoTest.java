@@ -1,4 +1,4 @@
-package com.excilys.test;
+package com.excilys.librarymanager.test;
 
 import java.time.LocalDate;
 import java.util.List;
