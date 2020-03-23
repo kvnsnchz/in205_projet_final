@@ -4,7 +4,14 @@ import java.util.List;
 
 import com.excilys.librarymanager.exception.DaoException;
 import com.excilys.librarymanager.model.Emprunt;
-
+/**
+ * <b>EmpruntDao</b>
+ * Data access object of lending
+ * 
+ * @author  Javier Martinez <i>[javier-andres.martinez@-boada@ensta.fr]</i>
+ * @version 1.0
+ * @since   2020-03-19
+ */
 public interface EmpruntDao {
 	public List<Emprunt> getList() throws DaoException;
 	public List<Emprunt> getListCurrent() throws DaoException;

@@ -22,6 +22,12 @@ public class EstablishConnection {
 		}
 	}
 
+	
+	/** 
+	 * Return the current connection
+	 * @return Connection
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		init();
 		return datasource.getConnection();
