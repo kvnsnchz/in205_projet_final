@@ -28,3 +28,4 @@ com/excilys/librarymanager/service/EmpruntServiceImpl.class
 com/excilys/librarymanager/utils/Abonnement.class
 com/excilys/librarymanager/exception/ServiceException.class
 com/excilys/librarymanager/service/MembreService.class
+com/excilys/librarymanager/servlet/LivreAddServlet.class

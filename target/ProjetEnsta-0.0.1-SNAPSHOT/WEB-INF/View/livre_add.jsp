@@ -8,7 +8,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/custom.css?1.0.0" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -21,22 +21,22 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>Création d'un nouveau livre</h5>
+      <h5>Crï¿½ation d'un nouveau livre</h5>
         <div class="row">
-	      <form action="/LibraryManager/livre_add" method="post" class="col s12">
+	      <form action="livre_add" method="post" class="col s12">
 	        <div class="row">
 	          <div class="input-field col m12 s12">
-	            <input id="titre" type="text" name="titre">
+	            <input id="titre" type="text" name="titre" value="${titre}">
 	            <label for="titre">Titre</label>
 	          </div>
 	        </div>
 	        <div class="row">
 	          <div class="input-field col s6">
-	            <input id="auteur" type="text" name="auteur">
+	            <input id="auteur" type="text" name="auteur" value="${auteur}">
 	            <label for="auteur">Auteur</label>
 	          </div>
 	          <div class="input-field col s6">
-	            <input id="isbn" type="text" name="isbn">
+	            <input id="isbn" type="text" name="isbn" value="${isbn}">
 	            <label for="isbn">ISBN 13</label>
 	          </div>
 	        </div>
@@ -46,7 +46,11 @@
 	        </div>
 	      </form>
 	    </div>
-	    
+
+      <c:if test="${error != null}">
+        <p class="error-message">${error}</p>
+      </c:if>
+
       </div>
       </div>
     </section>

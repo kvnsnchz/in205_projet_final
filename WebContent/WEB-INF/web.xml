@@ -59,4 +59,13 @@
     <servlet-name>LivreDetailsServlet</servlet-name>
     <url-pattern>/livre_details</url-pattern>
   </servlet-mapping>
+  <!-- LivreAddServlet -->
+  <servlet>
+    <servlet-name>LivreAddServlet</servlet-name>
+    <servlet-class>com.excilys.librarymanager.servlet.LivreAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreAddServlet</servlet-name>
+    <url-pattern>/livre_add</url-pattern>
+  </servlet-mapping>
 </web-app>
